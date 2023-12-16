@@ -1,1 +1,11 @@
+#numpyの読み込み
+import numpy as np
 
+a = np.array([[0, 1], [2, 3], [4, 5]])
+b = np.array([[0, 1, 2, 3], [4, 5, 6, 7]])
+
+#行列の掛け算
+culiculation_result_array = np.dot(a, b)
+
+#計算結果から最大を求める
+culiculation_result_array.max()
