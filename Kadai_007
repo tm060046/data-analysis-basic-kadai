@@ -1,0 +1,23 @@
+#必要なライブラリをインポート
+import matplotlib.pyplot as plt
+import pandas as ad
+import japanize_matplotlib
+import numpy as np
+
+#ファイルをデータフレームとして呼び込み、マージする。
+df = pd.read_csv("sample_pandas_6.csv")
+df = pd.merge(df, category_df[['商品番号', 'カテゴリー']], how='inner', on='商品番号')
+
+#出現頻度をカウント
+y = df['カテゴリー'].value_counts()
+print(y)
+
+#棒グラフ化する
+x = np.array([1, 2, 3, 4, 5, 6])
+label =["弁当", "菓子類", "飲料水", "デザート", "雑貨", "図書・新聞"]
+plt.title("各カテゴリーの出現頻度")
+plt.bar(x, y, tick_label=label)
+plt.show()
+
+#データフレームを基準列ごとにグループにまとめ、基本統計量を算出する。
+df.groupby('商品番号')['在庫', '注文数'].describe()
